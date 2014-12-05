@@ -1,7 +1,31 @@
+import os
 from flask import Flask, render_template
+from flask.ext import assets
 
 
 app = Flask(__name__)
+
+env = assets.Environment(app)
+
+env.load_path = [
+    os.path.join(os.path.dirname(__file__), 'bower_components')
+]
+
+env.register(
+    'js_all',
+    assets.Bundle(
+        'jquery/dist/jquery.min.js',
+    ),
+    output="js_all.js"
+)
+
+env.register(
+    'css_all',
+    assets.Bundle(
+        'bootstrap/dist/css/bootstrap.min.css',
+        output='css_all.css'
+    )
+)
 
 
 @app.route('/')
@@ -9,4 +33,4 @@ def index():
     return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
