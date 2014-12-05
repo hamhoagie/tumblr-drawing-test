@@ -5,6 +5,7 @@ MarkupSafe==0.23
 PyTumblr==0.0.6
 PyYAML==3.11
 Werkzeug==0.9.6
+gunicorn==19.1.1
 httplib2==0.9
 httpretty==0.8.3
 itsdangerous==0.24
